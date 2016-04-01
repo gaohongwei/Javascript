@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<script>
+/*
+http://phrogz.net/JS/classes/OOPinJS.html
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
+http://miageprojet2.unice.fr/@api/deki/files/1334/=JavaScript.pdf
+
+document.write
+x=document.getElementById("demo")  //Find the element
+x.innerHTML="Hello JavaScript";    //Change the content
+
+JavaScript is an object oriented language, but JavaScript does not use classes.
+In JavaScript you don’t define classes and create objects from these classes 
+JavaScript is prototype based, not class based.
+
+The prototype property allows you to add properties and methods to an object.
+
+JavaScript is a class-free, object-oriented language, and as such, it uses prototypal inheritance instead of classical inheritance. 
+3 different ways
+> Create a direct instance of an object by using built-in
+constructor for the Object class
+> Create a template (Constructor) first and then create an
+instance of an object from it
+Create object instance as Hash Literal
+
+#1
+var o = new Object();
+o.method = function(){}
+
+#2
+var o = new Object();
+o.prototype.method = function(){}
+
+#3
+function myObject() {
+    this.method = function(){}
+}
+var o = new myObject();
+
+#4
+function myObject() {}
+myObject.prototype.method = function(){}
+var o = new myObject();
+
+#5
+var o = {
+    method: function(){}
+}
+*/
+function person(firstname,lastname,age,eyecolor)
+{
+this.firstname=firstname;
+this.lastname=lastname;
+this.age=age;
+this.eyecolor=eyecolor;
+
+this.changeName=changeName;
+function changeName(name)
+{
+this.lastname=name;
+}
+}
+
+var person=new Object();
+person.firstname="John";
+person.lastname="Doe";
+person.age=50;
+person.eyecolor="blue"; 
+//document.write(person.firstname + " is/are " + person.age + " years old.");
+
+p2={
+	firstname:"John",
+	lastname:"Doe",
+	age:50,eyecolor:"blue"};
+p2.address="1234 street A";
+p2.pr=function pr()
+{
+	document.write
+	
+}
+//document.write(p2.firstname + " is/are " + p2.age + " years old, live at"+p2.address);
+function addRow(tableID)
+{
+var table=document.getElementById(tableID);
+var add=document.getElementById('add');
+var del=document.getElementById('del');
+var aaa=table.lastChild.cloneNode(true);
+table.appendChild(aaa);
+var trs = table.getElementsByTagName('tr');
+for (var i=0, iLen=inputs.length; i<iLen; i++) {
+  //trs[i].removeChild(add);
+alert(trs[i].innerHtml)
+}
+//var cell1=row.insertCell(-1);
+//cell1.innerHTML="New";
+//cell2.innerHTML="New";
+}
+
+function addRow1(tableID) {
+  var table = document.getElementById(tableID);
+  if (!table) return;
+  var newRow = table.rows[1].cloneNode(true);
+  // Now get the inputs and modify their names 
+  var inputs = newRow.getElementsByTagName('input');
+  for (var i=0, iLen=inputs.length; i<iLen; i++) {
+    // Update inputs[i]
+  }
+
+  // Add the new row to the tBody (required for IE)
+  var tBody = table.tBodies[0];
+  tBody.insertBefore(newRow, tBody.lastChild);
+}
+
+
+function addRow0(tableID) {
+            var table = document.getElementById(tableID);
+
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+
+            var cell1 = row.insertCell(0);
+            var element1 = document.createElement("input");
+            element1.type = "text";
+            cell1.appendChild(element1);
+
+            var cell2 = row.insertCell(1);
+            var element2 = document.createElement("input");
+            element2.type = "text";
+            cell2.appendChild(element2);
+
+            var cell3 = row.insertCell(1);
+            var element3 = document.createElement("button");
+            element3.type = "Delete";
+
+						//var last=$('#'+tableID +' tr:last');
+						//var last=table;
+						//alert(last); 
+						//last.append("abc");
+            //last.appendChild(element3);						
+        }
+				function deleteRow(el) {
+				  // while there are parents, keep going until reach TR 
+				  while (el.parentNode && el.tagName.toLowerCase() != 'tr') {
+				    el = el.parentNode;
+				  }
+				  // If el has a parentNode it must be a TR, so delete it
+				  // Don't delte if only 3 rows left in table
+				  if (el.parentNode && el.parentNode.rows.length > 3) {
+				    el.parentNode.removeChild(el);
+				  }
+				}
+
+</script>
+<body>
+	This is a table
+	<table id="tableId">
+	<tr><td>Host Name</td><td>Directory</td></tr>
+	<tr>
+		<td><input type="text"/></td><td><input type="text"/></td>
+		<td><input type="button" id='del' value="Remove" onclick="deleteRow(this);">	
+		<td><input type="button" id='add' value="Add" onclick="addRow('tableId')"/></td>		
+	</tr>
+	</table>
+
+</body>
+</html>
