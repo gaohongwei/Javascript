@@ -1,0 +1,6 @@
+Read checkbox checked status
+var id="admin_settings" 
+var dom = $('#'+id)
+dom.prop('checked')
+dom.attr('checked')
+dom.attr('checked', true)
