@@ -1,0 +1,4 @@
+id="target_type_show_hide"
+var doms =$('#'+id).find('input:checkbox')
+doms.slice(1)
+doms.not(":first")
