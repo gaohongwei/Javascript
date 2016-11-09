@@ -4,6 +4,8 @@ var dom = $('#'+id)
 dom.prop('checked')
 dom.attr('checked')
 dom.attr('checked', true)
+dom.prop('checked', true)
+dom.attr('checked', 'checked')
 
 
 Using jQuery > 1.6
