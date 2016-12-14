@@ -1,0 +1,6 @@
+### config/initializer/jsserver
+system('node bin/jsserver &')
+
+### bin/jsserver
+
+### Maybe create a service
