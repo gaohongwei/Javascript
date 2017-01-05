@@ -1,0 +1,8 @@
+
+1. css, decent and sibling
+div > p
+div  p
+div + p
+div~p
+
+2. attr, prop
