@@ -47,3 +47,6 @@ var myTimeout = setTimeout(logme, 1000);
         console.log(d);
         $('#date').text(d);
     }
+
+5. closure
+
