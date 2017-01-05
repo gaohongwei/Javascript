@@ -6,3 +6,9 @@ div + p
 div~p
 
 2. attr, prop
+attr, Get the value of an attribute for the first element in the set of matched elements or 
+set one or more attributes for every matched element.
+
+As of jQuery 1.6, the .attr() method returns undefined for attributes that have not been set. 
+
+To retrieve and change DOM properties such as the checked, selected, or disabled state of form elements, use the .prop() method.
