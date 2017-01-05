@@ -28,3 +28,22 @@ var myInterval = setInterval(logme, 1000);
 
 <input type="button" onclick="clearTimeout(myTimeout)" value="stop">
 var myTimeout = setTimeout(logme, 1000);
+
+    var timer_var;
+    $('#timer').click(function(){
+        var timer=$(this);
+        var status = timer.prop('value');
+        if ( status == 'Start') {
+            status = 'Stop';
+            timer_var = setInterval(logme, 1000);
+        } else {
+            clearInterval(timer_var);
+            status = 'Start';
+        }
+        timer.prop('value', status);
+    });
+    function logme(){
+        var d = new Date();
+        console.log(d);
+        $('#date').text(d);
+    }
