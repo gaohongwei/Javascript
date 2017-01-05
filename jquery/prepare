@@ -12,3 +12,11 @@ set one or more attributes for every matched element.
 As of jQuery 1.6, the .attr() method returns undefined for attributes that have not been set. 
 
 To retrieve and change DOM properties such as the checked, selected, or disabled state of form elements, use the .prop() method.
+
+3. event handler/delegation
+$('ul li').click(function(){
+
+});
+$('ul').on('click','li',function(){
+    console.log($(this));
+});
