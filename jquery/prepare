@@ -20,3 +20,11 @@ $('ul li').click(function(){
 $('ul').on('click','li',function(){
     console.log($(this));
 });
+
+4. Timer, setTimeout, setInterval
+Stop it by calling clear-- with the variable returned from setInterval or setTimeout
+<input type="button" onclick="clearInterval(myInterval)" value="stop">
+var myInterval = setInterval(logme, 1000);
+
+<input type="button" onclick="clearTimeout(myTimeout)" value="stop">
+var myTimeout = setTimeout(logme, 1000);
