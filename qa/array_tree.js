@@ -1,11 +1,11 @@
 nodes = [
-    {id: 1, pid:-1, children:[] },
-    {id: 2, pid:1, children:[] },
-    {id: 3, pid:1, children:[] },
-    {id: 4, pid:1,  children:[] }];
+    {id: 1, pid: 0 },
+    {id: 2, pid: 1 },
+    {id: 3, pid: 1 },
+    {id: 4, pid: 1 }];
 Fill children array for each node.
 Return root nodes.
-root are: node.pid == -1;
+root are: node.pid == 0;
 
 function build_tree(nodes) {
     var map={};
@@ -15,7 +15,7 @@ function build_tree(nodes) {
         var node = nodes[index];
         if (map[node.pid] == undefined) map[node.pid] = [];
         map[node.pid].push(node.id);
-        if (node.pid < 0) roots.push(node)
+        if (node.pid < 1) roots.push(node)
     }
     for(index=0;index<len;index++){
         var node = nodes[index];
