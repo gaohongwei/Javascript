@@ -12,4 +12,6 @@ function wait_process(){
     hTimeout = setTimeout(start_process,500);
 
 }
-$('#try').keyup(wait_process)
+$('#try1').keyup(wait_process);
+$('#try2').mouseout(start_process);
+$('#try').on('mouseout',start_process);
