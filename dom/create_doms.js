@@ -11,7 +11,7 @@ function create_list(target){
     var dom_child=$('<ul>', {text: ar[index], id:ar[index] });
     dom_top.append(dom_child);
   }
-  target.children().remove()
+  target.children().remove('ul');
   target.append(dom_top);
 }
 
@@ -23,6 +23,6 @@ function create_select(target){
     var dom_child=$('<option>', {text: ar[index], id:ar[index] });
     dom_top.append(dom_child);
   }
-  target.children().remove()
+  target.children().remove('ul');
   target.append(dom_top);
 }
