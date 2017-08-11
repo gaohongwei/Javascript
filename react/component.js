@@ -15,6 +15,11 @@ class ReactComponent extends React.Component {
   }
 }
 
+var ResourceTable = React.createClass({
+  render: function() { 
+  }
+});
+
 var element;
 element = <h1>Hello, world</h1>;
 element = new JsFunction({name: 'JsFunction'});
