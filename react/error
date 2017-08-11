@@ -1,0 +1,4 @@
+#####   Uncaught ReferenceError: props is not defined  #####   
+Use this.props
+
+#####   Objects are not valid as a React child  #####   
