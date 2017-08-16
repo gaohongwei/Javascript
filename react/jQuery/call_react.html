@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>React & jQuery</title>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vivagraphjs/0.9.0/vivagraph.min.js"></script>
+  <script src="https://fb.me/react-15.0.0.js"></script>
+  <script src="https://fb.me/react-dom-15.0.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script type='text/javascript' src='graph.js'></script>
+</head>
+<body>
+<div class="panel panel-default">
+  <div class="panel-heading text-center">Resource</div>
+  <script type="text/babel">
+  class ResourceDetails extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render () {
+      return (
+        <div>
+        This is React code
+        </div>
+      );
+    }
+
+  }
+  var ReactRender = function(){
+    // data is an Object which you wish to pass to React
+    ReactDOM.render(<ResourceDetails />, document.getElementById('root'));
+  }
+  window.ReactRender = ReactRender;
+  </script>
+  <div class="panel-body">
+    <button onclick='ReactRender()'> Render React </button>
+    <div id="root"></div>
+  </div>
+</div>
+</body>
+</html>
