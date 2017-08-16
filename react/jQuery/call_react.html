@@ -15,24 +15,25 @@
 </head>
 <body>
 <div class="panel panel-default">
-  <div class="panel-heading text-center">Resource</div>
+  <div class="panel-heading text-center">jQuery Calls React</div>
   <script type="text/babel">
-  class ResourceDetails extends React.Component {
+  class ReactComponent extends React.Component {
     constructor(props) {
       super(props);
     }
     render () {
       return (
         <div>
-        This is React code
+        This is React code. Time is changing:
+        {this.props.data}
         </div>
       );
     }
 
   }
   var ReactRender = function(){
-    // data is an Object which you wish to pass to React
-    ReactDOM.render(<ResourceDetails />, document.getElementById('root'));
+    var data = (new Date()).toString();
+    ReactDOM.render(<ReactComponent data = {data}/>, document.getElementById('root'));
   }
   window.ReactRender = ReactRender;
   </script>
