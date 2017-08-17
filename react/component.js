@@ -16,6 +16,13 @@ class ReactComponent extends React.Component {
 }
 
 var ResourceTable = React.createClass({
+  getInitialState: function() {
+     return {
+         value: instances[0].value,
+         details: null,
+         error: null
+     }
+  },  
   render: function() { 
   }
 });
