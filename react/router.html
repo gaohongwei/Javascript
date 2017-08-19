@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My First React Router Example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vivagraphjs/0.9.0/vivagraph.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.1.2/react-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script type='text/javascript' src='common/common_data.js'></script>
+  <script type='text/javascript' src='common/graph.js'></script>
+  <link rel = "stylesheet" type = "text/css" href = "common/common_css.css" />
+</head>
+<body>
+<div class="panel panel-default">
+  <div class="panel-heading text-center">Resource</div>
+  <div class="panel-body">
+    <div id="menu"></div>
+    <div id="other" style="width = 50%"></div>
+  </div>
+</div>
+<script type="text/babel">
+
+
+class RouteA extends React.Component {
+  btnClickB() {
+    browserHistory.push('/b');
+  }
+  btnClickC() {
+    browserHistory.push('/c');
+  }
+
+  render() {
+    return(
+      <div>
+        <h2>Route A</h2>
+        <div>
+          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+          <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+class RouteB extends React.Component {
+  btnClickA() {
+    browserHistory.push('/a');
+  }
+
+  btnClickC() {
+    browserHistory.push('/c');
+  }
+
+  render() {
+    return(
+      <div>
+        <h2>Route B</h2>
+        <div>
+          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+          <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+class RouteC extends React.Component {
+  btnClickA() {
+    browserHistory.push('/a');
+  }
+
+  btnClickB() {
+    browserHistory.push('/b');
+  }
+
+  render() {
+    return(
+      <div>
+        <h2>Route C</h2>
+        <div>
+          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+var Router = ReactRouter.BrowserRouter;
+var Route  = ReactRouter.Route;
+var Switch = ReactRouter.Switch;
+var Redirect = ReactRouter.Redirect;
+
+class MyRouter extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+      return (
+        <Router>
+          <Switch>
+            <Route path='/a' component={RouteA} />
+            <Route path='/b' component={RouteB} />
+            <Route exact path='/' component={RouteA} />
+            <Route path="*" component={RouteA} />
+            <Redirect from='*' to='/' />
+          </Switch>
+        </Router>
+      );
+    }
+};
+
+ReactDOM.render(
+  <MyRouter />,
+  document.getElementById('menu')
+);
+
+</script>
+</body>
+</html>
