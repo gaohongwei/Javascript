@@ -2,11 +2,11 @@ npm install -g create-react-app
 create-react-app aws_ui
 npm start
 cd aws_ui
-npm run build
 npm start #development
 #http://localhost:3000/
 
 Production
+npm run build
 cd build/
 npm install -g http-server
 hs
