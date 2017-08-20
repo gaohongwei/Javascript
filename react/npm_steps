@@ -1,0 +1,13 @@
+npm install -g create-react-app
+create-react-app aws_view
+npm start
+cd aws_view
+npm run build
+npm start #development
+#http://localhost:3000/
+
+Production
+cd build/
+npm install -g http-server
+hs
+http://localhost:8080
