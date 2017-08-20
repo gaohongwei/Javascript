@@ -1,6 +1,5 @@
 npm install -g create-react-app
 create-react-app aws_ui
-npm start
 cd aws_ui
 npm start #development
 #http://localhost:3000/
