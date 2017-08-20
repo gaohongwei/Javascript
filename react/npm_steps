@@ -21,3 +21,15 @@ Create a build system for your React app
 npm cache clean # -f (force) clear you npm cache
 npm install -g n#install "n" (this might take a while)
 n stable #upgrade nodejs to lastest version
+
+
+npm install react react-dom react-router --save
+npm install  \
+webpack \
+webpack-dev-server \
+babel-core \
+babel-loader \
+babel-preset-es2015 \
+babel-preset-react \
+babel-preset-stage-2 \
+--save-dev
