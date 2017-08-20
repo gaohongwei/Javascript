@@ -23,6 +23,7 @@ npm install -g n#install "n" (this might take a while)
 n stable #upgrade nodejs to lastest version
 
 
+# Install package
 npm install react react-dom react-router --save
 npm install  \
 webpack \
