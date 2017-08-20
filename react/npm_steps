@@ -11,3 +11,13 @@ cd build/
 npm install -g http-server
 hs
 http://localhost:8080
+
+
+npm version
+node -v
+npm install -g npm
+
+Create a build system for your React app
+npm cache clean # -f (force) clear you npm cache
+npm install -g n#install "n" (this might take a while)
+n stable #upgrade nodejs to lastest version
