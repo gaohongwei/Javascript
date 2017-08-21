@@ -13,6 +13,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/user' component={User}/>
+            <Route path={"/user/:id"} component={User} />
             <Route path='/schedule' component={User}/>
           </Switch>
         </div>
