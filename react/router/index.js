@@ -1,3 +1,5 @@
+// This works with a new project
+// All code is included
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
