@@ -1,8 +1,11 @@
 
-<Route path="/topics/:name" component={Topic} />
+<Switch>
+  <Route exact path='/' component={Instance}/>
+  <Route path={"/resources/:resource_type/:resource_id"} component={Resource} />
+  <Route path={"/resources/:resource_type"} component={Resources} />
+</Switch>
 
-export default function Topic(props) {
-  return <h1>{props.match.params.name}</h1>
-}
+ this.props.match.params.resource_type;
+ this.props.match.params.resource_id;
 
 window.location = '/topics/this_name';
