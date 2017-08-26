@@ -1,0 +1,6 @@
+  shouldComponentUpdate(nextProps) {
+    return true;
+  }
+  
+In the case of the react-router, the DOM of the first route is destroyed (not just hidden) 
+and therefore should be re-rendered.
