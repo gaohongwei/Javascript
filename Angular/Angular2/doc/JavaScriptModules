@@ -1,0 +1,8 @@
+The Angular module — a class decorated with @NgModule — 
+is a fundamental feature of Angular itself.
+
+JavaScript also has its own module system for managing collections of JavaScript objects. 
+
+In JavaScript each file is a module and all objects defined in the file belong to that module. 
+The module declares some objects to be public by marking them with the export key word. 
+Other JavaScript modules use import statements to access public objects from other modules.

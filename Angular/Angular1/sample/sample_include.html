@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AngularJS Routing example</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>    
+  </head>
+ 
+  <body ng-app="sampleApp">
+    <div ng-controller="Ctrl">
+        <select ng-model="template" ng-options="t.name for t in templates">
+         <option value="">(blank)</option>
+        </select>
+        url of the template: <tt>{{template.url}}</tt>
+        <hr/>
+        <div ng-include src="template.url" onload='myFunction()'></div>    
+    </div>
+    --------- src need to by single quoted, then double quoted
+    <div ng-controller="Ctrl">
+        <div ng-include src="'template1.html'"></div>        
+    </div>    
+    <!-- template1.html -->
+    <script type="text/ng-template" id="template1.html">
+      Content of template1.html
+    </script>
+
+
+    <!-- template2.html -->
+    <script type="text/ng-template" id="template2.html">
+        <p ng-class="color">Content of template2.html</p>
+    </script>
+
+    <script>
+        var myApp = angular.module('sampleApp', []);
+        myApp.controller('Ctrl',function($scope) {
+          $scope.templates = [{
+              name: 'template1.html',
+              url: 'template1.html'},
+          {
+              name: 'template2.html',
+              url: 'template2.html'}];
+          $scope.template = $scope.templates[0];
+
+          $scope.myFunction = function() {
+              $scope.color = 'red';
+          }
+        });
+    </script>
+
+  </body>
+</html>

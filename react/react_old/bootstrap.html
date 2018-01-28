@@ -1,0 +1,58 @@
+<<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Hello React</title>
+    <style type="text/css">
+        .wei{ color: blue; }
+    </style>     
+</head>
+<body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <div class="container">
+    <h3>In Raw HTML</h3>
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label class="sr-only">Field 1</label>
+            <input class="form-control" placeholder="Field 1" />
+        </div>
+        <div class="form-group">
+            <label class="sr-only">Field 2</label>
+            <input class="form-control" placeholder="Field 2" />
+        </div>
+        <button type="submit" class="btn btn-primary">Apply</button>
+        <button type="button" class="btn">Reset</button>
+    </form>   
+    <h3>In React Component</h3>
+    <div id="container"></div>
+</div>
+<script type="text/jsx">
+/** @jsx React.DOM */
+
+var App = React.createClass({
+    render: function() {
+        return (
+        <form className="wei form-inline" role="form">
+            <div className="form-group">
+                <label className="sr-only">Field 1</label>
+                <input className="form-control" placeholder="Field 1" />
+            </div>
+            <div className="form-group">
+                <label className="sr-only">Field 2</label>
+                <input className="form-control" placeholder="Field 2" />
+            </div>
+            <button type="submit" className="btn btn-primary">Apply</button>
+            <button type="button" className="btn">Reset</button>
+        </form>
+        );
+    }
+});
+ 
+React.render(<App />, document.getElementById('container'));
+</script> 
+</body>
+</html>

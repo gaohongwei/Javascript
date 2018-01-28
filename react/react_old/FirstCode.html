@@ -1,0 +1,163 @@
+<<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello React</title>
+  </head>
+<body> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/jsx">
+var HelloWorld = React.createClass({
+    render: function() {
+        return <div>Hello, world!</div>;
+    }
+});
+var MyComponent = React.createClass({
+    render: function(){
+        return (
+            <h1>Hello, world! MyComponent</h1>
+        );
+    }
+});
+var MyComponentVar = React.createClass({
+    render: function(){
+        return (
+            <h1>Hello, {this.props.name}!</h1>
+        );
+    }
+});
+/** @jsx React.DOM */
+
+var Counter = React.createClass({
+  incrementCount: function(){
+    this.setState({
+      count: this.state.count + 1
+    });
+  },
+  getInitialState: function(){
+     return {
+       count: 0
+     }
+  },
+  render: function(){
+    return (
+      <div class="my-component">
+        <h1>Count: {this.state.count}</h1>
+        <button type="button" onClick={this.incrementCount}>Increment</button>
+      </div>
+    );
+  }
+});
+
+var FilteredList = React.createClass({
+  filterList: function(event){
+    var updatedList = this.state.initialItems;
+    updatedList = updatedList.filter(function(item){
+      return item.toLowerCase().search(
+        event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({items: updatedList});
+  },
+  getInitialState: function(){
+     return {
+       initialItems: [
+         "Apples",
+         "Broccoli",
+         "Chicken",
+         "Duck",
+         "Eggs",
+         "Fish",
+         "Granola",
+         "Hash Browns"
+       ],
+       items: []
+     }
+  },
+  componentWillMount: function(){
+    this.setState({items: this.state.initialItems})
+  },
+  render: function(){
+    return (
+      <div className="filter-list">
+        <input type="text" placeholder="Search" onChange={this.filterList}/>
+      <List items={this.state.items}/>
+      </div>
+    );
+  }
+});
+
+var List = React.createClass({
+  render: function(){
+    return (
+      <ul>
+      {
+        this.props.items.map(function(item) {
+          return <li key={item}>{item}</li>
+        })
+       }
+      </ul>
+    )  
+  }
+});
+
+var MenuExample = React.createClass({
+  getInitialState: function(){
+      return { focused: 0 };
+  },
+  clicked: function(index){
+      // The click handler will update the state with
+      // the index of the focused menu entry
+      this.setState({focused: index});
+  },
+  render: function() {
+    // Here we will read the items property, which was passed
+    // as an attribute when the component was created
+
+    var self = this;
+
+    // The map method will loop over the array of menu entries,
+    // and will return a new array with <li> elements.
+
+    return (
+      <div>
+        <ul>{ this.props.items.map(function(m, index){
+          var style = '';
+          if(self.state.focused == index){
+              style = 'focused';
+          }
+          // Notice the use of the bind() method. It makes the
+          // index available to the clicked function:
+          return <li className={style} onClick={self.clicked.bind(self, index)}>{m}</li>;
+        }) }
+                
+        </ul>
+        
+        <p>Selected: {this.props.items[this.state.focused]}</p>
+      </div>
+    );
+  }
+});
+
+// Render the menu component on the page, and pass an array with menu options
+
+//React.render(new HelloWorld(), document.body); 
+
+React.render(<h1>Hello, wei!</h1>,
+document.body);
+React.render(React.DOM.h1(null, 'Hello, world!'),
+document.body);
+React.render(<MyComponentVar name="Handsome" />, 
+document.body);
+
+React.render(<HelloWorld />, document.body); 
+React.render(<MyComponent/>,document.body);
+React.render(<Counter/>, document.body);
+React.render(<FilteredList/>, document.body);
+React.render(
+    <MenuExample items={ ['Home', 'Services', 'About', 'Contact us'] } />,
+    document.body
+);
+</script>    
+</body>
+</html>

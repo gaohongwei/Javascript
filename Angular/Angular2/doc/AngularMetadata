@@ -1,0 +1,45 @@
+Metadata tells Angular how to process a class.
+
+
+HeroListComponent is just a class. 
+There is no evidence of a framework, no "Angular" in it at all.
+It's not a component until we tell Angular about it.
+
+We tell Angular that HeroListComponent is a component by attaching metadata to the class.
+
+In TypeScript, we attach metadata by using a decorator. Here's some metadata for HeroListComponent:
+@Component({
+  selector:    'hero-list',
+  templateUrl: 'app/hero-list.component.html',
+  providers:   [ HeroService ]
+})
+export class HeroListComponent implements OnInit {
+/* . . . */
+}
+
+The @Component decorator takes a required configuration object with the information 
+Angular needs to create and present the component and its view.
+
+@Component configuration options:
+selector: CSS selector that tells Angular to create and insert an instance of this component 
+where it finds a <hero-list> tag in parent HTML. 
+
+templateUrl: address of this component's template, which we showed above.
+directives: array of the components or directives that this template requires. 
+
+We saw in the last line of our template that we expect Angular to 
+insert a HeroDetailComponent in the space indicated by <hero-detail> tags. 
+Angular will do so only if we mention the HeroDetailComponent in this directives array.
+
+providers: array of dependency injection providers for services that the component requires. 
+This is one way to tell Angular that our component's constructor requires a HeroService 
+so it can get the list of heroes to display. 
+
+Angular reads the metadata specified by the @Component annotation. 
+That's how Angular learns to do "the right thing".
+
+The template, metadata, and component together describe a view.
+
+We apply other metadata decorators in a similar fashion to guide Angular behavior. 
+@Injectable, @Input, and @Output are a few of the more popular decorators 
+we'll master as our Angular knowledge grows.

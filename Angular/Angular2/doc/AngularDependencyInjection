@@ -1,0 +1,35 @@
+Supply a new instance of required class/services 
+Provide new components with the services they need.
+Most dependencies are services. 
+
+Angular can tell which services a component needs by looking at the types of its constructor parameters. 
+For example, the constructor of our HeroListComponent needs a HeroService:
+
+app/hero-list.component.ts (constructor)
+constructor(private service: HeroService) { }
+
+When Angular creates a component, it first asks an injector for the services that the component requires.
+An injector maintains a container of service instances that it has previously created. 
+If a requested service instance is not in the container, 
+the injector makes one and adds it to the container before returning the service to Angular. 
+When all requested services have been resolved and returned, 
+Angular can call the component's constructor with those services as arguments. 
+This is what we mean by dependency injection.
+
+The process of HeroService injection looks a bit like this:
+
+We often add providers to the root module so that the same instance of a service is available everywhere.
+app/app.module.ts (module providers)
+providers: [
+  BackendService,
+  HeroService,
+  Logger
+],
+
+Alternatively, we might register at a component level in the providers property of the @Component metadata:
+app/hero-list.component.ts (component providers)
+@Component({
+  selector:    'hero-list',
+  templateUrl: 'app/hero-list.component.html',
+  providers:   [ HeroService ]
+})

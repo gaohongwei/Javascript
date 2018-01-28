@@ -1,0 +1,57 @@
+<html >
+<body>
+<script src='angular.js'></script>
+<script>
+  var app = angular.module("app", []);
+  app.controller('AppController', function($scope){
+    $scope.leaveVoicemail = function(number, message){
+      alert('Number: ' + number + ' said: ' + message);
+    };
+  });
+
+  app.directive('phone', function(){
+    return {
+      restrict: 'E',
+      scope: {
+        number: '@',  // read only
+        network: '=', //two-way 
+        makeCall: '&' //call fun from the controller of the scope    
+      },
+      templateUrl: 'phone.html',
+       /*
+       This application must be served through a web server in order to allow the separate html file to be accessed by javascript. 
+       */
+      link: function(scope){
+          scope.networks = ["Verizon", "AT&T", "Sprint"];
+          scope.network = scope.networks[0];
+      }
+    };
+  });
+</script>
+</br></br>
+Define methods in controller</br>
+Referring methods in template</br>
+Create directive from template with isolated scope</br>
+</br></br>
+
+<div ng-app="app">
+  <script type="text/ng-template" id="phone.html">
+    <div>
+      Number: {{number}}
+      Network:<select ng-model="network" ng-options="net for net in networks"></select>
+    </div>
+    <input type="text" ng-model="value">
+    <div class="btn" ng-click="makeCall({message: value, number: number})">
+      Call Home!
+    </div>
+  </script>  
+
+  <div ng-controller="AppController">
+    <phone number="555-1234" network="network" make-call="leaveVoicemail(number, message)"></phone>
+    <phone number="867-5309" network="network" make-call="leaveVoicemail(number, message)"></phone>
+    <phone number="911" network="network" make-call="leaveVoicemail(number, message)"></phone>
+  </div>
+
+</div>
+</body>
+</html>

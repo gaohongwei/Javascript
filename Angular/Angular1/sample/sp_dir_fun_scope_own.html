@@ -1,0 +1,58 @@
+<html >
+<body>
+<script src='angular.js'></script>
+<script>
+  var app = angular.module("app", [])
+  app.controller('MainCtrl',function($scope){
+    $scope.items=[
+      {name:'book1'},    
+      {name:'book2'}
+    ];       
+    $scope.add1 = function(item){
+      if (item.count == null)item.count=0;
+      item.count++;
+    };
+    $scope.add2 = function(item){
+      if (item.count == null)item.count=0;
+      item.count++;
+    };       
+    $scope.del2 = function(item){
+      if (item.count == null)item.count=0;      
+      item.count--;
+    };    
+  });
+  app.directive("clickme", function(){
+    return {
+      restrict: "E",
+      scope: {
+        item: '=',
+        add2: '&'     
+      },
+      controller:function($scope) {
+        $scope.add = function(item){
+          if (item.count == null)item.count=0;
+          item.count++;
+          console.log(item);
+        };
+        $scope.del = function(item){
+          if (item.count == null)item.count=0;      
+          item.count--;
+        };       
+      },        
+      template: "<div>{{item.name}}:{{item.count}}</div>" +
+      '<div ng-click="add(item)">Add(from dir controller)</div>'+
+      '<div ng-click="del(item)">Rem(from dir controller)</div>'+
+      '<div ng-click="$parent.add1(item)">Add(from controller By $parent)</div>' +
+      '<div ng-click="add2({item:item})">Add(from controller By Attr)</div>'              
+    }
+  });
+       
+</script>
+<div ng-app="app" ng-controller="MainCtrl">
+  <ul>
+    <li ng-repeat="item in items" item="item">
+    <clickme item="item" add2='add2(item)' add3='add3(item)' ></clickme>
+    </li>
+  </ul> 
+</div>
+</html>

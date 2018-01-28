@@ -1,0 +1,165 @@
+<html >
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+
+</script>
+
+
+<body ng-app="weiApp">
+
+<h1>Example: Data binding: Enable/Disable</h1></br>
+<label><input type="checkbox" ng-model="checked"/>
+Toggle Button</label> 
+<button ng-disabled="checked">Press me</button>
+
+<h1>Example: Data binding: Input/Display</h1></br>
+<input type="text" ng-model="myInput"/>
+This is the value: </br>{{myInput}}
+
+<h1>Example: Repeat: array, list</h1></br>
+<div ng-controller='weiRepeat'>
+  <ul>
+  <li ng-repeat="v in ar"> {{v}}</li>
+  </ul>
+</div>
+
+<h1>Example: Data Providers</h1></br>
+<div ng-controller='weiProviders'>
+  <ul>
+  <li ng-repeat="v in providers"> {{v}}</li>
+  </ul>
+</div>
+
+<h1>Example: Checkbox with click event</h1></br>
+<div ng-controller="CheckboxCtrl">
+  <label ng-repeat="role in roles">
+    <input type="checkbox" checklist-model="user.roles" checklist-value="role.id" ng-click='myclick($event)'> {{role.text}}
+  </label>
+</div>
+
+<h1>Example: Checkbox with toggle event</h1></br>
+<div ng-controller='checkboxToggle'>
+<label ng-repeat="v in providers">
+    <input type="checkbox" ng-click="toggleSelection(v)" name="selectedFruits" value={{v}}>{{v}}
+</label>
+</div>
+
+<div ng-controller='checkboxChild'>
+<label ng-repeat="v in children">
+    <input type="checkbox"  name="addedFruits" value={{v}}>{{v}}
+</label>
+</div>
+
+<h1>Example: Checkbox with status change</h1></br>
+<div ng-controller='checkboxStatus'>
+<label ng-repeat="v in providers">
+    <input type="checkbox" ng-model="checkStatus" ng-change="checkChanged(checkStatus,v)" value={{v}}>{{v}}
+</label>
+</div>
+
+<div ng-controller='checkboxStatusChild'> 
+<label ng-repeat="v in children">
+    <input type="checkbox"  name="addedFruits" value={{v}}>{{v}}
+</label>
+</div>
+
+<script>
+  var app = angular.module("weiApp", ['ngResource']);
+  app.controller('weiRepeat',function($scope){
+    $scope.ar=['list1','list2','list3'];
+  });
+
+  app.factory('Data', function () {
+    return { 
+      children: [],
+      data: ['server0','server1'],
+      roles: 
+        [
+          {id: 1, text: 'guest'},
+          {id: 2, text: 'user'},
+          {id: 3, text: 'customer'},
+          {id: 4, text: 'admin'}
+        ]
+    };
+  });
+
+
+app.factory('DataJson1', function ($resource) {
+    return $resource('http://192.168.183.128:3000/users.json', {}, {
+        query: { method: 'GET', isArray: true }, // DataJson1.query();
+        show: { method: 'GET' },  // Not working
+        create: { method: 'POST' }
+    })
+});
+
+app.factory('DataJson2', function($resource) {
+  return $resource('http://192.168.183.128:3000/users.json', 
+    { partId:'@_id' });
+});
+
+app.factory('UserFactory', function ($resource) {
+    return $resource('http://192.168.183.128:3000/users.json', {}, {
+        show: { method: 'GET' },
+        update: { method: 'PUT', params: {id: '@id'} },
+        delete: { method: 'DELETE', params: {id: '@id'} }
+    })
+});
+
+
+  app.controller('weiProviders',function($scope,Data){
+    $scope.providers=Data.data;
+  });  
+  app.controller('CheckboxCtrl', function($scope,Data) {
+    //$scope.roles = Data.query();
+    $scope.roles = Data.roles;
+    $scope.user = {
+      roles: [2, 4]
+    };
+    $scope.checkAll = function() {
+      $scope.user.roles = $scope.roles.map(function(item) { return item.id; });
+    };
+    $scope.uncheckAll = function() {
+      $scope.user.roles = [];
+    };
+    $scope.checkFirst = function() {
+      $scope.user.roles.splice(0, $scope.user.roles.length); 
+      $scope.user.roles.push(1);
+    };
+    $scope.myclick=function(event){
+      //alert(event);
+      console.log(event.target);
+    };
+  });
+
+  app.controller('checkboxToggle',function($scope,Data){
+    $scope.providers=Data.data;
+    $scope.children=Data.children;    
+    $scope.toggleSelection = function toggleSelection(arg) {
+      $scope.children.push(arg);
+    };  
+  });
+  app.controller('checkboxChild',function($scope,Data){
+    $scope.children=Data.children; 
+  });  
+
+  app.controller('checkboxStatus',function($scope,Data){
+    $scope.providers=Data.data;
+    $scope.children=Data.children;    
+    $scope.checkChanged = function(checked,v) {
+      if (checked)  {
+        $scope.children.push(v);
+      } else {
+        var index = $scope.children.indexOf(v);
+        if (index > -1) {
+          $scope.children.splice(index, 1);
+        }
+      }
+    };  
+  });
+  app.controller('checkboxStatusChild',function($scope,Data){
+    $scope.children=Data.children; 
+  });    
+</script>
+</body>
+</html>
+

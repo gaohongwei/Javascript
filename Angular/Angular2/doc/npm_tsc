@@ -1,0 +1,77 @@
+
+node -v 
+npm -v
+
+tns create wei --ng
+npm view angular2 version
+npm update angular2 --save
+npm update --save
+npm outdated
+npm install angular2@2.0.0 --save
+npm install angular2@latest --save
+npm install angular2@2.0.0beta.1 --save
+
+npm update angular2@2.0.0 --save
+
+
+npm install -g angular-cli
+brew install watchman
+ng new abc
+
+=================
+
+The following are my steps:
+npm install -g cordova
+cordova create wei_deploy com.example.g64 '周易卜卦'
+
+My angular project is in ~/angular
+My cordova project is in ~/cordova
+
+cd ~/angular
+ng build 
+ng build prod
+cd ~/cordova
+cp -rp ../weigaohong/dist/* www/
+rm -rf www/*.gz
+
+cordova platform add android --save
+
+cordova build android
+cordova build android --release --buildConfig
+
+# Build and sign release version
+rm my-release-key.keystore
+keytool -genkey -dname "cn=kevin wei, ou=wei, o=Wei, c=US" -keystore my-release-key.keystore -alias release-key -keyalg RSA -keysize 2048 -validity 10000
+cordova build android --release -- --keystore=./my-release-key.keystore --storePassword=pan1017 --alias=release-key --password=pan1017
+
+
+
+#for the first publication
+#!/bin/sh
+echo "Ionic to Signed APK ---- b@agencys.eu // Benjamin Rathelot\n"
+printf "Project dir : "
+read DIR
+printf "Project key alias : "
+read ALIAS
+cd $DIR/
+ALIAS = 'Yijin Bagua'
+cordova build --release android
+cd platforms/android/build/outputs/apk/
+keytool -genkey -v -keystore my-release-key.keystore -alias $ALIAS -keyalg RSA -keysize 2048 -validity 10000
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk $ALIAS
+zipalign -v 4 android-release-unsigned.apk signedApk.apk
+
+
+# For updating :
+#!/bin/sh
+echo "Ionic to Signed APK ---- b@agencys.eu // Benjamin Rathelot\n"
+printf "Project dir : "
+read DIR
+printf "Project key alias : "
+read ALIAS
+cd $DIR/
+cordova build --release android
+cd platforms/android/build/outputs/apk/
+rm signedApk.apk
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk $ALIAS
+zipalign -v 4 android-release-unsigned.apk signedApk.apk

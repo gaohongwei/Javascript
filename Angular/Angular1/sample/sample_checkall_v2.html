@@ -1,0 +1,78 @@
+<html ng-app='weiApp'>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">
+</script>
+
+<body>
+<table ng-controller='weiCheckAll'>
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" ng-model="model.allItemsSelected" 
+        ng-change="selectAll()">
+      </th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="e in entities" ng-class="getSelectedClass(e)">
+      <td>
+        <input type="checkbox" ng-model="entity.isChecked" ng-change="selectEntity()">
+      </td>
+      <td>{{e.title}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<script>
+//http://stackoverflow.com/questions/11872832/how-to-respond-to-clicks-on-a-checkbox-in-an-angularjs-directive
+  var app = angular.module("weiApp", []);
+
+
+  app.factory('Data', function () {
+    return { 
+      entities: 
+        [
+          {id: 1, title: 'guest'},
+          {id: 2, title: 'user'},
+          {id: 3, title: 'customer'},
+          {id: 4, title: 'admin'}
+        ]
+    };
+  });
+  app.controller('weiCheckAll',function($scope,Data){
+    $scope.entities=Data.entities;
+    $scope.selected = [];
+    var model = {};
+    model.entities=Data.entities;
+    $scope.model = model;
+
+    // This property is bound to the checkbox in the table header
+    model.allItemsSelected = false;
+
+    // Fired when an entity in the table is checked
+    $scope.selectEntity = function () {
+        // If any entity is not checked, then uncheck the "allItemsSelected" checkbox
+        for (var i = 0; i < model.entities.length; i++) {
+            if (!model.entities[i].isChecked) {
+                model.allItemsSelected = false;
+                return;
+            }
+        }
+
+        // ... otherwise ensure that the "allItemsSelected" checkbox is checked
+        model.allItemsSelected = true;
+    };
+    $scope.selectAll = function () {
+        // Loop through all the entities and set their isChecked property
+        for (var i = 0; i < model.entities.length; i++) {
+            model.entities[i].isChecked = model.allItemsSelected;
+        }
+    };
+
+  });
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html >
+<body>
+<script src='angular.js'></script>
+<script>
+// The controller is a regular JavaScript function. It is called
+// once when AngularJS runs into the ng-controller declaration.
+
+function InlineEditorController($scope){
+
+	// $scope is a special object that makes
+	// its properties available to the view as
+	// variables. Here we set some default values:
+	$scope.showtooltip = false;
+	$scope.value = 'Edit me.';
+	// Some helper functions that will be
+	// available in the angular declarations
+	$scope.hideTooltip = function(){
+
+		// When a model is changed, the view will be automatically
+		// updated by by AngularJS. In this case it will hide the tooltip.
+
+		$scope.showtooltip = false;
+	}
+
+	$scope.toggleTooltip = function(e){
+		e.stopPropagation();
+		$scope.showtooltip = !$scope.showtooltip;
+	}
+}
+var app=angular.module('app', []);
+app.controller('InlineEditorController', InlineEditorController);
+</script>
+<!-- When this element is clicked, hide the tooltip -->
+<div id="main" ng-app='app' ng-controller="InlineEditorController" ng-click="hideTooltip()">
+
+	<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
+	<div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip">
+
+		<!-- ng-model binds the contents of the text field with the "value" model.
+		 Any changes to the text field will automatically update the value, and
+		 all other bindings on the page that depend on it.  -->
+		<input type="text" ng-model="value" />
+	</div>
+
+	<!-- Call a method defined in the InlineEditorController that toggles
+	 the showtooltip variable -->
+	<p ng-click="toggleTooltip($event)">{{value}}</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html ng-app="Demo">
+<head>
+  <meta charset="utf-8" />
+  <title>
+      Using Scope.$watch() To Watch Functions In AngularJS
+  </title>
+  <link rel="stylesheet" type="text/css" href="bootstrap320.min.css">
+  <script src='jquery211.min.js'></script>
+  <script src='angular.js'></script> 
+</head>
+<body ng-controller="AppController">
+  <h1>
+      Using Scope.$watch() To Watch Functions In AngularJS
+  </h1>
+  <p>
+    <strong>Best Friend:</strong>
+    <a
+      ng-click="setBestFriend( tricia )"
+      ng-class="{ best: tricia.isBestFriend }"
+      >{{ tricia.name }}</a>
+    or
+    <a
+      ng-click="setBestFriend( joanna )"
+      ng-class="{ best: joanna.isBestFriend }"
+      >{{ joanna.name }}</a>
+  </p> 
+  <script type="text/javascript">
+    // Create an application module for our demo.
+    var app = angular.module( "Demo", [] );
+    app.controller("AppController",
+      function( $scope, $interpolate ) {
+        $scope.tricia = {
+          name: "Tricia",
+          isBestFriend: 1
+        };
+        $scope.joanna = {
+          name: "Joanna",
+          isBestFriend: 0
+        };
+        $scope.bestFriend = $scope.tricia;
+        // Normally, we would $watch() a scope reference. But, in the following
+        // cases, we're going to watch Functions. When we do this, the watch
+        // function will be called mulitple times per-digest. If you return a
+        // value from the watch function, this value will be used to determine if
+        // the watch callback should be triggered (on value change event).
+
+        // Notice that $scope is passed-in as the first argument.
+        $scope.$watch(
+          function( $scope ) {
+            console.log( "Function watched:" );
+            // This becomes the value we're "watching".
+            return( "Function: Best friend is " + $scope.bestFriend.name );
+          },
+          function( newValue ) {
+            console.log( 'Changed to:',newValue );
+          }
+        );
+
+        $scope.setBestFriend = function( friend ) {
+          // Reset the current bestie.
+          $scope.bestFriend.isBestFriend = false;
+          // Set the new one.
+          $scope.bestFriend = friend;
+          $scope.bestFriend.isBestFriend = true;
+        };
+        $scope.$watch(
+          $interpolate( "Interpolate: Best frined is {{ bestFriend.name }}" ),
+          function( newValue ) {
+              console.log( newValue );
+          }
+        );
+
+        // This is here as a "control" - not really part of the primary demo;
+        // but, can show the enhanced readability that is provided by
+        // $interpolate(), which is doing the same thing.
+        $scope.$watch(
+          "( 'Literal: Best frined is ' + bestFriend.name )",
+          function( newValue ) {
+            console.log( newValue );
+          }
+        );      
+    });
+  </script> 
+</body>
+</html>
+view raw

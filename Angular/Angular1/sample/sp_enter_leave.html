@@ -1,0 +1,37 @@
+<html >
+<body>
+  <script src='angular.js'></script>
+  <script>
+    var app = angular.module("app", [])
+
+    app.directive("enter", function(){
+     return function (scope, element, attrs) {
+          element.bind("mouseenter", function(){
+            element.addClass("panel");  
+            element.addClass(attrs.enter); 
+            console.log("attrs="+attrs.enter);                      
+            console.log("I'm inside of you!");
+          })
+        }
+    });
+
+    app.directive("leave", function(){
+     return function (scope, element, attrs) {
+          element.bind("mouseleave", function(){
+            element.removeClass("panel");  
+            element.removeClass(attrs.enter);  
+            console.log("I left you!");            
+            console.log(attrs); 
+            console.log(this);
+            console.log("I left you!");                             
+          })
+        }
+    });
+
+  </script>
+  <div ng-app="app">  
+    <div enter leave> Test add/remove class by hard code</div>
+    <div enter="panel" leave>Test add/remove class by attrs</div>
+  </div>
+</body>
+</html>

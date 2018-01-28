@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  title = 'html css';
+
+  ngOnInit(): void {
+    this.getLocation();
+  }
+
+  getLocation():void {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+  }
+  showPosition(position:any):void {
+    var str = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+
+    console.log(str);
+  }
+}

@@ -1,0 +1,17 @@
+https://community.jivesoftware.com/thread/276515
+Show a QR icon
+<!-- JiaThis Button BEGIN -->  
+<div class="jiathis_style">  
+  <a class="jiathis_button_weixin"></a>  
+</div>  
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>  
+<!-- JiaThis Button END -->  
+
+一键分享到微博、QQ空间、QQ好友、微信、腾讯微博、豆瓣 ...
+http://overtrue.me/share.js/
+
+<!-- share.js -->
+  <script src="./assets/js/social-share.min.js"></script>
+  <div class="share-component" data-mobile-sites="wechat,qq,qzone,tencent"></div>
+  <div class="social-share" data-wechat-qrcode-title="请打开微信扫一扫vv"></div>
+

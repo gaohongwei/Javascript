@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Hello React</title>
+  </head>
+<body> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/jsx">
+data={
+  title:"This is the title",
+  body:"<br />This is the body.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat varius est, sed rhoncus felis vehicula non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce sit amet arcu malesuada, dapibus mi ac, commodo arcu. Donec at semper nibh. Duis pulvinar sagittis sollicitudin. Morbi mollis nisl tincidunt ligula tincidunt mollis. Nam interdum ligula nec libero ullamcorper, ut sodales lorem lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec lectus neque, porttitor sed fermentum vitae, tincidunt sed ante. Vestibulum urna sapien, sollicitudin id dolor nec, sagittis venenatis lacus."
+};
+var CollapsibleSection = React.createClass({
+  getInitialState: function(){
+     return {
+       cssClass: ''
+     }
+  },  
+  toggleBody: function(){
+    this.setState({
+      cssClass: this.state.cssClass=='' ? 'hidden':''
+    });
+    console.log('cssClass',this.state.cssClass);
+  },  
+  render: function() {
+    return (
+      <div className="panel panel-default">
+        <button type="button" className="btn btn-primary" onClick={this.toggleBody}>{this.props.title}</button>        
+        <div className={this.state.cssClass} dangerouslySetInnerHTML={{__html:this.props.children}} />
+        
+      </div>
+    );
+  }
+});
+
+React.render(<CollapsibleSection title={data.title}>{data.body}</CollapsibleSection>, document.getElementById('container'));
+</script> 
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h2>React & Bootstrap</h2>
+    <div id="container"></div>
+  <div class="col-md-1"></div>
+</div>
+</body>
+</html>

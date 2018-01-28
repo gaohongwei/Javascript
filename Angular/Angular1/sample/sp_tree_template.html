@@ -1,0 +1,30 @@
+<html >
+<body>
+<!-- attempt to load Bootstrap,jQuery,AngularJS from CDN --> 
+<link rel="stylesheet" type="text/css" href="bootstrap320.min.css">
+<script src='jquery211.min.js'></script>
+<script src='angular.js'></script>
+<script>
+var app = angular.module('app', []);
+app.controller('c01',function($scope){
+    $scope.categories=[
+    {name:'a001'},
+    {name:'a002'},
+    {name:'a003'},
+    {name:'a004'}]; 
+    });
+</script>
+<div ng-app='app'>
+<script type="text/ng-template" id="categoryTree">
+    {{ category.name }}
+    <ul ng-if="category.categories">
+        <li ng-repeat="category in category.categories" ng-include="'categoryTree'">           
+        </li>
+    </ul>
+</script>
+<ul   ng-controller="c01">
+    <li ng-repeat="category in categories" ng-include="'categoryTree'"></li>
+</ul> 
+</div>
+</body>
+</html>

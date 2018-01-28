@@ -1,0 +1,50 @@
+<html >
+<body>
+<script src='angular.js'></script>
+<script>
+  var app = angular.module("app", [])
+  app.controller('MainCtrl',function($scope){
+    $scope.mydata = [{id:1,name:'One'},{id:2,name:'Two'},{id:3,name:'Three'}];
+    $scope.doSomething = function(id){
+        alert(id); 
+    };
+    $scope.data='This is data from controller';
+  });
+  app.directive('myDirective', function($templateCache,$compile) {
+    return {
+      restrict: 'A',
+      scope:{
+        template : "@",
+        mydata : "=",
+        mycallback:"&"
+      },
+      //controller:'MainCtrl',
+      link: function(scope,element) {
+        var template = $templateCache.get(scope.template);
+        console.log('scope.template:',scope.template);
+        console.log('template:',template);   
+        console.log('data:',scope.data);                     
+        scope.values = scope.mydata;
+        scope.doSomething = scope.mycallback;
+        element.append($compile(template)(scope));
+      }
+    }
+  });
+       
+</script>
+<div ng-app="app">
+  <script type="text/ng-template" id="myDirectivesCustomTemplate.html">
+    <ul>
+      <li ng-repeat="value in values">
+      <a ng-click="doSomething({id:value.id})">
+        {{value.name}}
+      </a>
+      </li>
+    </ul>
+  </script>
+  <div ng-controller="MainCtrl">
+     <div my-directive template="myDirectivesCustomTemplate.html" mydata="mydata" mycallback="doSomething(id)"></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+--------QuickStart--------
+How/where to define hero obj
+export class Hero {
+  id: number;
+  name: string;
+}
+
+hero: Hero = {
+  id: 1,
+  name: 'Windstorm'
+};
+
+This doesn't work
+
+export class AppComponent {
+  title = 'Tour of Heroes';
+  hero: Hero = {
+    id: 1,
+    name: 'Windstorm'
+  };
+}

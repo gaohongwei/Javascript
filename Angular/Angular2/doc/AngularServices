@@ -1,0 +1,67 @@
+Service is a broad category encompassing any value, function, or feature that our application needs.
+
+Almost anything can be a service. A service is typically a class with a narrow, well-defined purpose. 
+It should do something specific and do it well.
+
+Examples include:
+logging service
+data service
+message bus
+tax calculator
+application configuration
+
+There is nothing specifically Angular about services.
+Angular itself has no definition of a service. 
+There is no service base class, and no place to register a service.
+
+Yet services are fundamental to any Angular application. 
+Our components are big consumers of services.
+Here's an example of a service class that logs to the browser console
+
+There is nothing specifically Angular about services. 
+Angular itself has no definition of a service. 
+There is no service base class, and no place to register a service.
+
+app/logger.service.ts (class)
+export class Logger {
+  log(msg: any)   { console.log(msg); }
+  error(msg: any) { console.error(msg); }
+  warn(msg: any)  { console.warn(msg); }
+}
+
+Here's a HeroService that fetches heroes and returns them in a resolved Promise. 
+The HeroService depends on the Logger service and another BackendService 
+that handles the server communication grunt work.
+app/hero.service.ts (class)
+export class HeroService {
+  private heroes: Hero[] = [];
+
+  constructor(
+    private backend: BackendService,
+    private logger: Logger) { }
+
+  getHeroes() {
+    this.backend.getAll(Hero).then( (heroes: Hero[]) => {
+      this.logger.log(`Fetched ${heroes.length} heroes.`);
+      this.heroes.push(...heroes); // fill cache
+    });
+    return this.heroes;
+  }
+}
+
+Services are everywhere.
+We prefer our component classes lean. 
+Our components don't fetch data from the server, they don't validate user input, 
+and they don't log directly to the console. They delegate such tasks to services.
+
+A component's job is to enable the user experience and nothing more. 
+It mediates between the view (rendered by the template) and 
+the application logic (which often includes some notion of a model). 
+A good component presents properties and methods for data binding. 
+It delegates everything nontrivial to services.
+
+Angular doesn't enforce these principles. 
+It won't complain if we write a "kitchen sink" component with 3000 lines.
+
+Angular does help us follow these principles by making it easy to factor our application logic 
+into services and make those services available to components through dependency injection.

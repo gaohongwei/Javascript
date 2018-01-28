@@ -1,0 +1,4 @@
+1. Define component
+2. Add route mapping to app.routing.ts
+const appRoutes: Routes = [ ]
+3.Add component to app.module.ts

@@ -1,0 +1,65 @@
+<html >
+<body>
+<script src='angular.js'></script>
+<script>
+    var app = angular.module("superhero", [])
+
+    app.directive("superman1", function() {
+      return {
+        restrict: "E",
+        template: "<div> superman1 </div>"
+      }
+    }); 
+    app.directive("superman2", function() {
+      return {
+        restrict: "A",//default
+        template: "<div> superman2 </div>"
+      }
+    });   
+    app.directive("superman3", function() {
+      return {
+        restrict: "C",
+        template: "<div> superman3 </div>"
+      }
+    }); 
+    app.directive("superman4", function() {
+      return {
+        restrict: "M", // comments
+        template: "<div> superman4 </div>"
+      }
+    }); 
+
+    // The link function define behavior
+    app.directive("enter", function(){
+     return function (scope, element, attrs) {
+          element.bind("mouseenter", function(){
+            element.addClass("panel");  
+            element.addClass(attrs.enter); 
+            console.log("attrs="+attrs.enter);                      
+            console.log("I'm inside of you!");
+          })
+        }
+    });
+    // The link function define behavior
+    app.directive("leave", function(){
+     return function (scope, element, attrs) {
+          element.bind("mouseleave", function(){
+            element.removeClass("panel");  
+            element.removeClass(attrs.enter);  
+            console.log("attrs="+attrs.enter); 
+            console.log("I left you!");                                            
+          })
+        }
+    });
+       
+</script>
+<div ng-app="superhero">
+  <superman1></superman1>
+  <div superman2></div>  
+  <div class="superman3"></div>  
+  <div superman4></div>      
+  <div enter leave> Test add/remove class by hard code</div>
+  <div enter="panel" leave>Test add/remove class by attrs</div>
+  </div>
+</body>
+</html>

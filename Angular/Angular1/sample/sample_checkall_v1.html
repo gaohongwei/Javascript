@@ -1,0 +1,91 @@
+<html ng-app='weiApp'>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">
+</script>
+
+<body>
+<table ng-controller='weiCheckAll'>
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" 
+          ng-click="selectAll($event)"
+          ng-checked="isSelectedAll()">
+      </th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="e in entities" ng-class="getSelectedClass(e)">
+      <td>
+        <input type="checkbox" name="selected"
+          ng-checked="isSelected(e.id)"
+          ng-click="updateSelection($event, e.id)">
+      </td>
+      <td>{{e.title}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<script>
+//http://stackoverflow.com/questions/11872832/how-to-respond-to-clicks-on-a-checkbox-in-an-angularjs-directive
+  var app = angular.module("weiApp", []);
+
+
+  app.factory('Data', function () {
+    return { 
+      entities: 
+        [
+          {id: 1, title: 'guest'},
+          {id: 2, title: 'user'},
+          {id: 3, title: 'customer'},
+          {id: 4, title: 'admin'}
+        ]
+    };
+  });
+  app.controller('weiCheckAll',function($scope,Data){
+    $scope.entities=Data.entities;
+    $scope.selected = [];
+
+    var updateSelected = function(action, id) {
+      if (action === 'add' && $scope.selected.indexOf(id) === -1) {
+        $scope.selected.push(id);
+      }
+      if (action === 'remove' && $scope.selected.indexOf(id) !== -1) {
+        $scope.selected.splice($scope.selected.indexOf(id), 1);
+      }
+    };
+
+    $scope.updateSelection = function($event, id) {
+      var checkbox = $event.target;
+      var action = (checkbox.checked ? 'add' : 'remove');
+      updateSelected(action, id);
+    };
+
+    $scope.selectAll = function($event) {
+      var checkbox = $event.target;
+      var action = (checkbox.checked ? 'add' : 'remove');
+      for ( var i = 0; i < $scope.entities.length; i++) {
+        var entity = $scope.entities[i];
+        updateSelected(action, entity.id);
+      }
+    };
+
+    $scope.getSelectedClass = function(entity) {
+      return $scope.isSelected(entity.id) ? 'selected' : '';
+    };
+
+    $scope.isSelected = function(id) {
+      return $scope.selected.indexOf(id) >= 0;
+    };
+
+    //something extra I couldn't resist adding :)
+    $scope.isSelectedAll = function() {
+      return $scope.selected.length === $scope.entities.length;
+    };
+  });
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+Angular itself ships as a collection of JavaScript modules. We can think of them as library modules.
+
+Each Angular library name begin with the @angular prefix.
+
+Install them with the npm package manager and 
+Import parts of them with JavaScript import statements.
+
+Import Angular's Component decorator from the @angular/core library like this:
+Import Angular modules from Angular libraries using JavaScript import statements:
+import { Component } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+Our application module needs material from within that BrowserModule so 
+we add it to the @NgModule metadata imports like this.
+
+imports:      [ BrowserModule ],
+We're using both the Angular and JavaScript module systems together.
+
+It's easy to confuse the two systems because they share the common vocabulary of "imports" and "exports". 

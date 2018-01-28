@@ -1,0 +1,22 @@
+# http://docs.nativescript.org/angular/publishing/creating-launch-screens-android
+# 1: Install Node.js
+brew install node4-lts
+node --version
+
+# 2: Install the NativeScript CLI
+npm install -g nativescript
+
+# 3: Install iOS and Android requirements
+ruby -e "$(curl -fsSL https://www.nativescript.org/setup/mac)"
+
+# 4: Verify the setup
+tns doctor
+
+# 5: Create Angular 2 App
+
+# 6: Verify the setup
+Setting launch screen and App Icons
+
+#7: Publish
+
+tns prepare android

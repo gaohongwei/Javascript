@@ -1,0 +1,123 @@
+<html ng-app='weiApp'>
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">
+</script>
+<body >
+
+<h3>Checkbox group by directives & ng-repeat</h3>
+<div ng-controller="weiRepeat">
+  <div ng-repeat="obj in data">
+    <ckbx></ckbx>
+  </div>
+</div>
+
+<div ng-controller="fun4Directive">
+<ckbxs></ckbxs>
+</div>
+
+<h3>Checkbox group by checklist-model & ng-repeat </h3>
+<div ng-controller="weiRepeat">
+  <label ng-repeat="role in data">
+    <input type="checkbox" checklist-model="data" checklist-value="role.id"> {{role.text}}
+  </label>
+</div>
+
+<script>
+var app = angular.module("weiApp", [])
+app.controller('weiRepeat',function($scope,Data){
+  $scope.data=Data.data;
+});
+
+app.controller('fun4Directive',function($scope,Data){
+  $scope.mychange=function(v){
+    alert(v);
+  };
+});
+
+app.factory('Data', function () {
+  return { 
+    data: 
+      [
+        {id: 1, text: 'guest'},
+        {id: 2, text: 'user'},
+        {id: 3, text: 'customer'},
+        {id: 4, text: 'admin'}
+      ]
+  };
+});
+
+app.directive('ckbx', function() {
+  return {
+    restrict: 'E',
+    template: '<input type="checkbox" value={{obj.id}}>{{obj.text}}'
+  }
+});
+
+
+app.directive('ckbxs', function(Data){
+  return {
+    restrict: 'E',
+    template: '<h3>Checkbox group by one directive</h3>' + 
+    '<div ng-repeat="obj in data">' + 
+      '<input type="checkbox" ng-click="mychange(obj.text)" value={{obj.id}}>{{obj.text}}' + 
+    '</div>',
+    link: function(scope, elem, attr) {
+      scope.data = Data.data;
+    }
+  };
+});
+
+app.directive('helloWorld', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    // default, use parent scope
+    // scope: true,  // use a child scope that inherits from parent
+    // scope: {},  // use a new isolated scope
+    template: '<p style="background-color:{{color}}">Hello World',
+    link: function(scope, elem, attrs) {
+      elem.bind('click', function() {
+        elem.css('background-color', 'white');
+        scope.$apply(function() {
+          scope.color = "white";
+        });
+      });
+      elem.bind('mouseover', function() {
+        elem.css('cursor', 'pointer');
+      });
+    }
+  }; 
+});
+
+
+  app.directive("repeatNtimes", function() { 
+    return {
+      restrict: "E",
+      compile: function(tElement, attrs) {
+        console.log(tElement);
+        console.log(attrs);        
+        var content = tElement.children();
+        for (var i=1; i<attrs.repeat; i++) {
+          tElement.append(content.clone()); 
+        } // for
+      } // compile
+    }; // return
+  });
+
+
+  app.directive("myWidget", function() {
+    var linkFunction = function(scope, element, attributes) {
+    var paragraph = element.children()[0]; 
+    $(paragraph).on("click", function() {
+      alert('dsd');
+    $(this).css({ "background-color": "red" }); });
+    };
+      return {
+        restrict: "E",
+        link: linkFunction
+    }; 
+  });
+
+</script>
+</body>
+</html>
