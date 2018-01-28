@@ -1,6 +1,0 @@
-You can use the !important flag in css to ensure rules aren't overridden, 
-but they're still prone to errors if everyone else uses them of course:
-
-p {
-    color: red !important;
-}
