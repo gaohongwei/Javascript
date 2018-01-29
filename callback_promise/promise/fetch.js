@@ -23,3 +23,28 @@ my_get.then(
     console.log(err); // Error: "It broke"
   }
 );
+
+// Update
+
+function update(data) {
+  return fetch('/api/update', {
+    method: 'put',
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(checkStatus)
+    .then(()=>console.log('updated!!!'))
+}
+
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  } else {
+    var error = new Error(response.statusText)
+    error.response = response
+    throw error
+  }
+}
