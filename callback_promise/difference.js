@@ -18,6 +18,8 @@ Promises
     the other rejects the promise
   No callback parameters so cleaner code
   No nested code, all flatterned
+  Can be chained
+  Catch error without try.. catch, just chain the catch
   Naturally handle errors, catch
   A promise is in one of three different states: pending, fulfilled or rejected
   promise.done allows us to wait for the promise to be fulfilled or rejected before doing something with it
