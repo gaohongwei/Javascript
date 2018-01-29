@@ -23,4 +23,5 @@ Promises
   Naturally handle errors, catch
   A promise is in one of three different states: pending, fulfilled or rejected
   promise.done allows us to wait for the promise to be fulfilled or rejected before doing something with it
+  promise.done, not chainable
   Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again)
