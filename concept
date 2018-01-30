@@ -49,4 +49,11 @@ var myTimeout = setTimeout(logme, 1000);
     }
 
 5. closure
-
+function mul(x){
+  return function(y){
+    return function(z){
+      return x*y*z;
+    }
+  }
+}
+mul(2)(3)(4)
