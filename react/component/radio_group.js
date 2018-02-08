@@ -4,14 +4,10 @@ import PropTypes from "prop-types"
 class RadioGroup extends React.Component {
   constructor(props) {
     super(props);
+    this.onChange = this.props.onChange.bind(this);
     this.state = {
       selected_value: this.props.selected_value
     }
-  }
-  componentWillMount(){
-    window.setSelectedRadio = (selected) => {
-      this.setState( { selected_value: selected });
-    };
   }
   render () {
     return (
@@ -23,7 +19,7 @@ class RadioGroup extends React.Component {
               name= {this.input_name}
               value={option.value}
               checked={ option.value == this.state.selected_value}
-              onChange = {this.props.onChange}
+              onChange = {this.onChange}
             />
             {option.label}
           </label>
