@@ -10,7 +10,7 @@ const RadioGroup = props =>
             name= {props.input_name}
             value={option.value}
             checked={ option.value == props.selected_value}
-            onChange={e=>console.log(e)}
+            onChange={props.onChange}
           />
           {option.label}
         </label>
