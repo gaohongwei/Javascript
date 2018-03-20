@@ -22,6 +22,11 @@ Reducers
   return a new state with Object.assign({}, state, {})
 
 Store
+  maintain and manage state
+  Update
+    dispatch an action
+  read/get
+    store.getState() 
   the object that brings actions/reducer together
   Holds application state;
   Allows access to state via getState();
@@ -31,3 +36,17 @@ Store
 
   only one store in a Redux application. 
   When you want to split your data handling logic, you'll use reducer composition instead of many stores.
+
+Provider 
+  a React component from the “react-redux” library. 
+  provide the store to its child components.
+  put your component within Provider.
+
+Connect
+  connect our components to the redux store. 
+  map the stores state and dispatch to the props of a component
+
+  mapStateToProps
+  mapDispatchToProps 
+
+combineReducers
