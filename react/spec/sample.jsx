@@ -1,6 +1,10 @@
-  function getComponent(defaultProps, overrides = {}) {
+api
+http://airbnb.io/enzyme/docs/api/shallow.html
+
+
+function getComponent(defaultProps, overrides = {}) {
     return shallow(<CallForward {...{...defaultProps, ...overrides}}/>);
-  }
+}
 
     const defaultProps = {
       mode: 'disabled',
