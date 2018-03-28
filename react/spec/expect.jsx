@@ -1,3 +1,5 @@
+expect(select.html()).to.equal('html');
+expect(select.html()).match(/pattern/) 
 
 (wrapper.find('.fn-device-identifier')).to.have.length(1);
 (wrapper.text()).to.include('abc');
@@ -28,5 +30,5 @@
 (component.find('.todays-total').text()).to.equal('abc');
 (component.find('.monthly-bill-total').text()).to.equal('abc');
 
-
 (onChange).to.have.been.called.with("abc");
+expect(onChange).to.have.been.called;
