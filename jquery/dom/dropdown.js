@@ -1,3 +1,17 @@
+##### clear dropdown options
+  $("#select_id option").remove();
+  $('#select_id').children().remove();
+
+##### Add dropdown options
+  var p1= $('<option/>', { value: '1', text: 'lable 1'})
+  var p2 = "<option value=2>label 2</option>"
+  var p3 = "<option value='3'>label 3</option>"
+
+  p1.appendTo('#select_id')
+  $('#select_id').append(p2)
+  $('#select_id').append(p3)
+
+##### #####
 $('#tba').click(function(){
   var target=$(this);
   create_list(target);
