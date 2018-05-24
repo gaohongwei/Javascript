@@ -41,6 +41,7 @@ Action Creators
 
 
 Reducers 
+  action => state
   map action changes to new state
   update state according to action changes
 
