@@ -1,4 +1,7 @@
+# https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/
 Concepts
+  Redux 
+  react-redux 
   actions/action creators
   components
   container
@@ -8,6 +11,12 @@ Concepts
   store
   dispatch
 
+Redux 
+  state management
+
+react-redux 
+  integrate redux’s state management into a React application
+  
 Actions 
   tells what happend/changed
   payloads (data, or information) 
@@ -64,8 +73,33 @@ Reducers
 components/containers
   containers associate/connect components to redux store
 
+Provider 
+  React component coming with “react-redux” library. 
+  provide the store to its child components.
+  makes the store accessible to it’s children
 
+  Usually put our react components within Provider.
+
+  const store = createStore(todoApp,{})
+  // Provider is given the store as a prop
+  render(
+    <Provider store={store}>
+      <App/>
+    </Provider>, document.getElementById('app-node'))
+
+Connect
+  connect our components to redux store
+  retrieve data by obtaining its current state, or 
+  change its state by dispatching an action 
+  mapStateToProps
+  mapDispatchToProps
+  
 Store
+  Storage for state
+  no way to directly modify the store
+  reducers is only way to  modify the store
+  To change data, we need to dispatch an action
+
   The Store is the object that brings them together. 
   It has the following responsibilities:
 
