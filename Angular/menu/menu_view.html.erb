@@ -1,0 +1,66 @@
+<%= display(tt('menu'))%></br>
+<div ng-app="app" ng-controller='menusController' ng-init="initialize()">
+  <script type="text/ng-template" id="node">   
+    <div 
+    ng-mouseenter="item.showAction=true" 
+    ng-mouseleave="item.showAction=false" 
+    ng-swipe-left="item.showAction=true" 
+    ng-swipe-right="item.showAction=false" >
+      <a ng-click="toggle_kids(item)">
+        {{item.expand}} id={{item.id}},{{item.tname}}
+        <span ng-if="item.url">,url={{item.url}}</span>
+      </a>  
+      <span ng-show="item.showAction"> 
+        <span ng-if="!item.pid">     
+        <a class="btn btn-primary" ng-click="new_item(item)"><%=tt('add_submenu')%></a>
+        <span ng-if="cache.item">          
+        <a class="btn btn-primary" ng-click="paste_item(item)"><%=tt('paste')%></a>
+        </span>                   
+        </span> 
+        <span ng-if="item.pid">               
+        <a class="btn btn-primary" ng-click="show_item(item)"><%=tt('show')%></a> 
+        <a class="btn btn-primary" ng-click="edit_item(item)"><%=tt('edit')%></a>                    
+        <a class="btn btn-primary" ng-click="copy_item(item)"><%=tt('copy')%></a>  
+        <a class="btn btn-primary" ng-click="move_item(item)"><%=tt('move')%></a>   
+        </span>                      
+        <span ng-if="!item.pid">         
+        <a class="btn btn-primary" ng-click="expand_all()"><%=tt('expand_all')%></a> 
+        </span>                      
+      </span>      
+    </div>      
+  </script> 
+  <script type="text/ng-template" id="nodeTree">
+    <li ng-include="'node'"></li>
+    <div class='well' ng-show="item.show_form_task">
+      <div ng-include="'add_item'"></div>       
+    </div>       
+    <ul ng-if="item.kids && !item.hideKids">
+      <li ng-repeat="item in item.kids" ng-include="'nodeTree'">
+      </li>
+    </ul>     
+  </script>   
+  <script type="text/ng-template" id="tree">
+    <ul><tree-node ng-repeat="it in items" item="it"></tree-node></ul>
+  </script> 
+  <ul>
+    <li ng-repeat="item in items" ng-include="'nodeTree'"></li>
+  </ul>
+  <!--table style="width: 100%">
+  <tbody>
+  <row>By Directive only, ng-click function not fired</row>
+  <td>
+      <tree items="items"></tree>
+  </td></tbody>
+  </table--> 
+<!--Add Edit Delete Action -->
+  <script type="text/ng-template" id="add_item">
+    <%=tt('url')%>:
+    <input type="text" ng-model="item.url" size="60"></br>   
+    <%=tt('kname')%>:    
+    <input type="text" ng-model="item.name" size="60"></br>    
+    <%=tt('tname')%>:
+    <input type="text" ng-model="item.tname" size="60"></br>
+    <a class="btn btn-primary" ng-click="save_item(item)"><%=tt('save')%></a>
+    <a class="btn btn-danger"  ng-click="hide_form(item)"><%=tt('cancel')%></a>       
+  </script>                  
+</div>
