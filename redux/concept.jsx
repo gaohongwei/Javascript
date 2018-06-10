@@ -95,9 +95,12 @@ Connect
   mapDispatchToProps
   
 Store
+  created from reducer
+  reducers is only way to  modify the store  
+  
   Storage for state
   no way to directly modify the store
-  reducers is only way to  modify the store
+
   To change data, we need to dispatch an action
 
   The Store is the object that brings them together. 
