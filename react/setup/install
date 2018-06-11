@@ -1,0 +1,31 @@
+Step 1: Download and Install NodeJs
+$ node test.js
+ 
+Step 2: Installing Global Packages
+$ npm install -g babel
+$ npm install -g babel-cli
+
+Step 3: Create Root Folder
+$ mkdir reactApp
+$ npm init
+
+Step 4: Add Dependencies and Plugins
+$ npm install webpack –save
+$ npm install webpack-dev-server --save
+
+
+Since we want to use React, we need to install it first. 
+The –save command will add these packages to package.json file.
+
+$ npm install react --save
+$ npm install react-dom --save
+
+$ npm install babel-core
+$ npm install babel-loader
+$ npm install babel-preset-react
+$ npm install babel-preset-es2015
+
+Step 6: create files
+
+Step 6: Running the Server
+$ npm start
