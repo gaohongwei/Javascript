@@ -17,46 +17,33 @@ Redux
 react-redux 
   integrate redux’s state management into a React application
   
-Actions 
-  tells what happend/changed
-  payloads (data, or information) 
-  your application -> your store(reducer)
-  Sample:
-  {
-    type: ADD_TODO,
-    value: 'Build my first Redux app'
-  }
-Action Creators
-  functions that create actions.
-  function addTodo(text) {
+0. component
+1. event handler 
+  used in the component
+2. action/creator
+  define event handler
+  functions that return actions.
+  const onChange = (value) => {
     return {
-      type: ADD_TODO,
-      value: 
-    }
-  }
-
-  const updateMethod = (value) => {
-    return {
-      type: UPDATE_METHOD,
-      method_id: value
-    };
-  };
-  const changeEnabledCallForward = (value) => {
-    return {
-      type: UPDATE_PARAMS,
+      type: 'SELECT_CHANGE',
       mode: value
     };
   };
 
+  tells what happend/changed
+  payloads (data, or information) 
 
-Reducers 
+3. Reducers 
+  The reducer is a pure function that 
+    takes the previous state and an action, 
+    and returns the next state.  
+  function(state, action){
+    return {Object.assign({}, state, {})}
+  }
+  your change -> your store(reducer)
   action => state
   map action changes to new state
   update state according to action changes
-
-  The reducer is a pure function that 
-  takes the previous state and an action, 
-  and returns the next state.
 
   export default (state=initialState.voicemail, action) => {
     switch (action.type) {
@@ -69,32 +56,36 @@ Reducers
     }
   };
 
-
-components/containers
+4. Container
   containers associate/connect components to redux store
+    mapStateToProps
+    mapDispatchToProps
+  connect(mapStateToProps, mapDispatchToProps)(MyComponent)
 
-Provider 
-  React component coming with “react-redux” library. 
-  provide the store to its child components.
-  makes the store accessible to it’s children
-
-  Usually put our react components within Provider.
-
+5. store and provider
+  create store from reducer
+  provide store to the container
+  
   const store = createStore(todoApp,{})
   // Provider is given the store as a prop
   render(
     <Provider store={store}>
       <App/>
     </Provider>, document.getElementById('app-node'))
+  
+  React component coming with “react-redux” library. 
+  provide the store to its child components.
+  makes the store accessible to it’s children
 
-Connect
+  Usually put our react components within Provider.
+6. Connect
   connect our components to redux store
   retrieve data by obtaining its current state, or 
   change its state by dispatching an action 
   mapStateToProps
   mapDispatchToProps
   
-Store
+7. Store
   created from reducer
   reducers is only way to  modify the store  
   
@@ -121,4 +112,3 @@ Store
   In the previous section, we used combineReducers() 
   to combine several reducers into one. We will now import it, 
   and pass it to createStore().
-
