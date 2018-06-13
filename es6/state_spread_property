@@ -20,17 +20,3 @@ Rest Properties
 state
   Object.assign({}, state, {a: action.filter})
   { ...state, a: action.filter }
-
-Merge multiple object
-// es5
-  var obj1 = { a: 1, b: 2 }
-  var obj2 = { a: 2, c: 3, d: 4}
-  var obj3 = Object.assign(obj1, obj2)
-  
-  var obj1 = { a: 0 , b: { c: 0}};
-  var obj2 = Object.assign({}, obj1);
-  
-// es6
-  const obj1 = { a: 1, b: 2 }
-  const obj2 = { a: 2, c: 3, d: 4}
-  const obj3 = {...obj1, ...obj2}
