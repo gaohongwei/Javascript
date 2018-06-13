@@ -1,0 +1,48 @@
+/* 
+for–in loop is for looping over object properties.
+for–of loop is for looping over data—like the values in an array, string
+*/
+ var array = ['a', 'b', 'c'];
+  for (var i of array) {
+    console.log(i) // a b c
+  }
+
+  for (var chr of "abc") {
+    console.log(chr);
+  }
+
+// hash data
+  var hash = {a:1, b:2}
+  for (var key of Object.keys(hash)) {
+    console.log(key + ": " + hash[key]);
+  }
+
+// for .. in
+  var array = ['a', 'b', 'c'];
+  for (var i in array) {
+    console.log(i + 1) // 01 11 21
+  }
+  var hash = {a:1, b:2}
+  for (var i in hash) {
+    console.log(i ) // a b
+  }
+
+// map data
+  var myMap = new Map();
+  myMap.set('NaN', 'not a number');
+  myMap.set('BD', 'big data');  
+
+  for (var [key, value] of myMap) {
+    console.log(key + "'s value is: " + value);
+  }
+
+// Old way, 20 year old
+  var array = ['a', 'b', 'c'];
+  for (var len=array.length,index = 0; index < len; index++) {
+    console.log(array[index]);
+  }
+
+// es5, no break
+  array.forEach(function (value) {
+    console.log(value);
+  });
