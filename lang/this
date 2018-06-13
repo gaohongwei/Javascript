@@ -1,0 +1,6 @@
+call or apply
+  var test = obj.getFullname;
+  test(); // take window as this
+  test.call(obj); // take obj as this
+
+bind
