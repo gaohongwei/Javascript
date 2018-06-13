@@ -1,0 +1,12 @@
+// es5
+var myModule = { x: 1, y: function(){ console.log('This is ES5') }}
+module.exports = myModule;
+
+
+//es6
+const myModule = { x: 1, y: () => { console.log('This is ES5') }}
+export default myModule;
+
+
+var myModule = require('./myModule'); //es5
+import myModule from './myModule'; //es6
