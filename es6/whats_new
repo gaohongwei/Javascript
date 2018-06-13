@@ -1,0 +1,54 @@
+// https://medium.com/front-end-hacking/es6-vs-es5-9254f8390332
+arrow functions: 
+  These are like JavaScript candy. 
+  It looks clean, I’ve found there’s less room for syntax error (at least in the cases I’ve used them), and implicit returns.
+
+Promises — resolve/reject/.then: 
+  Promises became less clunky too. 
+  The resolve/reject feature is pretty cool (
+  resolve = do this when the promise is resolved, 
+  reject = do this if there is an error and the function is rejected). 
+  Plus there’s ‘.then’ — this is saying ‘when you’re done and have all the information you need, 
+  then do this.’ 
+  This allows you to not have to pass in a parameter to the function that 
+  takes care of what happens when the promise has been fulfilled.
+
+class definition: 
+  You can simply declare classes now (along with a constructor, similar to initialize in Ruby classes). 
+  In ES5, you had to set a variable equal to a function and define the class that way.
+
+class inheritance: 
+  A useful tool that allows you to inherit properties from another object/module/class, 
+  with the simple word “extends.” 
+  The code you had to write in ES5 in order to do this was much more clunky.
+
+const
+  ES6 allows for ‘immutable’ variables — 
+  before const you could not make your variables non-reassignable without the help of object properties.
+
+block-scoped variables: 
+  No hoisting these! These variables stay safe and sound in their scope.
+
+default parameter values: 
+  You know how you can declare default values for a function’s parameters in Ruby by doing this: def a_function(x=1, y=2) ? Well, 
+  now you can do that in JavaScript.
+
+spread operator: 
+  This one is great. You can call multiple elements as either their literal elements, or as function parameters. 
+  I think of it as a variable that stores multiple elements in a specific order.
+
+string interpolation: 
+  Super. Useful.
+
+for-of operator: 
+  This came in handy recently for me. 
+  You can basically say ‘for (let x of range) { if (x > range) break *INSERT NEXT LINES OF CODE HERE }.’ 
+  Being able to use break in a loop like that is what was useful for me.
+
+Object.assign: 
+  A function that merges objects. An ES5 equivalent could be creating a new object, 
+  and then iterating through multiple other objects and assigning their contents to the new object.
+
+
+Date-time formatting: 
+  A basic but very useful feature.
