@@ -1,3 +1,24 @@
-yarn dev
-yarn test
-yarn test_watch
+Doc
+  https://github.com/airbnb/enzyme/
+React install
+  npm install chai enzyme mocha
+  npm uninstall enzyme
+  npm install enzyme@3.3.0
+
+  Chai is an assertion library
+    assert, expect or should
+  Enzyme makes it easier to
+    assert, manipulate, and traverse your React Components
+  Mocha is test framework running
+
+test single file:
+  yarn test app/assets/javascripts/apps/tests/marketplace/search/details/DefaultDetails.spec.jsx
+  node_modules/.bin/jest app/assets/javascripts/apps/tests/marketplace/search/details/DefaultDetails.spec.jsx  
+  node_modules/.bin/mocha mocha.test.js
+  
+Test all files:
+  yarn test
+  yarn dev
+  yarn test
+  yarn test_watch
+
