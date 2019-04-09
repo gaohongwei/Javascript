@@ -1,0 +1,35 @@
+
+Bootstrap Classes Reference and sample
+https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp
+
+https://getbootstrap.com/docs/3.3/css/
+
+https://stackoverflow.com/questions/18838964/add-bootstrap-glyphicon-to-input-box/18839305#18839305
+https://stackoverflow.com/questions/18838964/add-bootstrap-glyphicon-to-input-box
+
+Official way
+<form class="form-inline">
+  <div class="form-group has-feedback">
+    <input type="text" class="form-control" >
+    <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+  </div>
+</form>
+
+Updated Bootstrap 3.x
+You can use the .input-group class like this:
+<div class="input-group">
+    <input type="text" class="form-control"/>
+    <span class="input-group-addon">
+        <i class="fa fa-search"></i>
+    </span>
+</div>
+ 
+Bootstrap 2.x
+You can use the .input-append class like this:
+
+<div class="input-append">
+    <input class="span2" type="text">
+    <button type="submit" class="btn">
+        <i class="icon-search"></i>
+    </button>
+</div>

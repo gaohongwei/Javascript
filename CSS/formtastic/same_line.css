@@ -1,0 +1,12 @@
+https://github.com/justinfrench/formtastic/pull/516
+https://github.com/justinfrench/formtastic/wiki/6.1-Customize%3a-CSS#Example
+
+.formtastic fieldset > ol >li.radio fieldset ol li {
+  margin:0.1em 0.5em 0.5em 0;
+  display: inline-block;
+}
+
+.same_line fieldset ol li{
+  display: inline-block;
+  margin-right:  80px;
+}

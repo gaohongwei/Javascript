@@ -1,0 +1,37 @@
+<html>
+ <head>
+  <style>
+   OL { counter-reset: item; padding-left: 10px; }
+   LI { display: block }
+   LI:before { content: counters(item, ".") " "; counter-increment: item }
+  </style>
+ </head>
+ <body>
+ source: <br>
+ http://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working</br>
+  http://jsfiddle.net/PTbGc/ </br>
+ <!-- http://jsfiddle.net/PTbGc/  -->
+ <ol>
+  <li>one</li>
+  <li>two
+  <ol>
+   <li>two.one</li>
+   <li>two.two</li>
+   <li>two.three</li>
+  </ol>
+  </li>
+  <li>three
+  <ol>
+   <li>three.one</li>
+   <li>three.two
+    <ol>
+     <li>three.two.one</li>
+     <li>three.two.two</li>
+    </ol>
+      </li>
+   </ol>
+   </li>  
+  <li>four</li>
+  </ol>
+ </body>
+</html>
