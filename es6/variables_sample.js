@@ -30,3 +30,26 @@ Merge multiple object
   const obj1 = { a: 1, b: 2 }
   const obj2 = { a: 2, c: 3, d: 4}
   const obj3 = {...obj1, ...obj2}
+
+  # array to list of elements
+  function sum(x, y, z) {
+    return x + y + z;
+  }
+
+  const numbers = [1, 2, 3];
+
+  console.log(sum(...numbers));
+  // expected output: 6
+  
+Rest Properties
+  let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+  x; // 1
+  y; // 2
+  z; // { a: 3, b: 4 }
+
+  let n = { x, y, ...z };
+  n; // { x: 1, y: 2, a: 3, b: 4 }
+  
+state
+  Object.assign({}, state, {a: action.filter})
+  { ...state, a: action.filter }
