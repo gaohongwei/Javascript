@@ -13,3 +13,11 @@ Use backticks
 
   var fourAgreements = `You have the right to be you.
       You can only be you when you do your best.`
+
+  const aListOfItems =
+  `<ul>
+    <li>Point number one</li>
+    <li>Point number two</li>
+    <li>Point number three</li>
+    <li>Point number four</li>
+  </ul>`
