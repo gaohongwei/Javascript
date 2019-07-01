@@ -17,29 +17,47 @@ Redux
 react-redux 
   integrate redux’s state management into a React application
   
-0. component
-1. event handler 
-  used in the component
-2. action/creator
-  define event handler
-  functions that return actions.
-  const onChange = (value) => {
-    return {
-      type: 'SELECT_CHANGE',
-      mode: value
+1. Basic
+  Components
+    Listen to the user and server events and send them to JS functions.
+    Render DOM based on some data.
+    has event handler 
+  Actions:
+    json object for event
+    Sample:
+      {"type": "FETCH_POST", "id": 1234} // <-- Action
+  Event:
+    In Redux, events are represented as a JSON object called "Actions".
+    {"type": "FETCH_POST", "id": 1234} // <-- Action
+
+  Action Creators:
+    functions creating Actions
+     tells what happend/changed with payloads (data, or information) 
+    function fetchPost(id) {
+      return {
+         type: FETCH_POST,
+         result: makeServerRequest("http://postsServer.com/api/id")
+       };
+    }
+
+    const onChange = (value) => {
+      return {
+        type: 'SELECT_CHANGE',
+        mode: value
+      };
     };
-  };
 
-  tells what happend/changed
-  payloads (data, or information) 
-
-3. Reducers 
+2. Reducers 
   The reducer is a pure function that 
-    takes the previous state and an action, 
-    and returns the next state.  
+    has parameters
+      the previous state
+      an action (event type anf payload)
+    return next state.
+    apply action to the current state and
   function(state, action){
     return {Object.assign({}, state, {})}
   }
+  
   your change -> your store(reducer)
   action => state
   map action changes to new state
@@ -55,6 +73,16 @@ react-redux
         return state;
     }
   };
+
+3. Dispatching an Action
+  Redux provides a function called "dispatch"
+  Just means firing the event defined by the arguments
+  Dispatching an Action means simply calling the dispatch function w/ the action JSON object.
+  Sample:
+    Call the "Action Creator" w/ post id and
+    then use its returned value (Action JSON object) to finally dispatch it to "reducers"
+    dispatch(fetchPost(id)) or
+    dispatch({type:"FETCH_POST", id:1234})
 
 4. Container
   containers associate/connect components to redux store
