@@ -1,3 +1,6 @@
+// fetch only handle network error
+// does not handle 400/500 error
+// so please use axios
 const url = 'https://api.github.com/search/repositories?q=ruby'
 export function fetchProducts() {
   return dispatch => {
