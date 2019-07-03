@@ -1,0 +1,29 @@
+Promise(es6)
+
+Actions
+
+export default function fetchAllUser() {
+  return (dispatch) => {
+    axios.get('url')
+    .then(res => res.json())
+    .then(users => {
+      type: 'FETCH_ALL_USERS',
+      payload: users
+    })
+  }
+}
+
+export default function createUser(params) {
+  const request = axios.post('http://www..., params);
+  return (dispatch) => {
+    function onSuccess(success) {
+      dispatch({ type: CREATE_USER, payload: success });
+      return success;
+    }
+    function onError(error) {
+      dispatch({ type: ERROR_GENERATED, error });
+      return error;
+    }
+    request.then(success => onSuccess, error => onError);
+  };
+}
