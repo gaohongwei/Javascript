@@ -2,6 +2,10 @@ cookies:
   data can be read be server
   used for authentication
 
+localStorage
+  good for public information
+  not for private
+  
 localStorage and sessionStorage
   up to 10Mb
   saved locally only
