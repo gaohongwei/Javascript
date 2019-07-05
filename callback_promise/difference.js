@@ -1,5 +1,5 @@
+Normally code is synchronous
 Asynchronous
-  Normally code is synchronous
   You are not sure about asynchronous operations
     their completion time
     the order of their return
