@@ -1,0 +1,9 @@
+Store JWTs securely
+  Store it inside an HttpOnly cookie, 
+  Do not store it in local storage (or session storage). 
+
+  If you store it inside localStorage, 
+  it is accessible by any script inside your page 
+
+  HttpOnly cookie is never accessible (both for reading or writing) 
+  from JavaScript running in the browser.
