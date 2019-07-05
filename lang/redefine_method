@@ -1,0 +1,6 @@
+  let realFetch = window.fetch;
+  window.fetch = function (url, opts) {
+  }
+
+                  // pass through any requests not handled above
+  realFetch(url, opts).then(response => resolve(response));
