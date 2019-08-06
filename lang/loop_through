@@ -1,6 +1,6 @@
 /* 
-for–in loop is for looping over object properties.
-for–of loop is for looping over data—like the values in an array, string
+for–in loop is for looping over keys of objects(array, object).
+for–of loop is for looping over values of iterable objects, such as an array, string
 */
  var array = ['a', 'b', 'c'];
   for (var i of array) {
