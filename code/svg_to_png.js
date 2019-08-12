@@ -33,13 +33,12 @@ function svg_to_png(container) {
 
 // working code
 export  function to_png() {
-    var svgData = roofMarkup()
     var canvas = document.createElement("canvas");
-
     canvas.width = 500;
     canvas.height = 500;
     var ctx = canvas.getContext("2d");
 
+    var svgData = roofMarkup();
     var img = document.createElement("img");
     img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))) );
 
@@ -47,6 +46,13 @@ export  function to_png() {
         ctx.drawImage(img, 0, 0);
         var imgsrc = canvas.toDataURL("image/png");
 
+        // download directly
+        let image = imgsrc.replace("image/png", "image/octet-stream");
+        window.location.href=image;
+
+        // var image = imgsrc.replace("data:image/png;base64,", '');
+
+        // download as clicking on a link
         var a = document.createElement("a");
         a.download = "b.png";
         a.href = imgsrc;
