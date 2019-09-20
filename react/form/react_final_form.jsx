@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 
 import { Form, Field } from 'react-final-form'
 
+import './MyModel.css'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -20,21 +21,14 @@ const colors = [
   {value: '#0000ff', label: '💙 Blue'}
 ];
 
-const mselection = [
-  {value: 'chicken', label: '🐓 Chicken'},
-  {value: 'ham', label: '🐷 Ham'},
-  {value: 'mushrooms', label: '🍄 Mushrooms'},
-  {value: 'cheese', label: '🧀 Cheese'},
-  {value: 'tuna', label: '🐟 Tuna'},
-  {value: 'pineapple', label: '🍍 Pineapple'},
-];
+
 
 const MyModel = () => (
   <div>
     <h1>React Final Form - Simple Example</h1>
     <Form
       onSubmit={onSubmit}
-      initialValues={{ vradio: 'radio1', vcheckbox: 'checkbox1', employed: true }}
+      initialValues={{ vradio: 'radio1', vcheckbox: ['checkbox1','checkbox2'], employed: true }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
           <div>
@@ -71,15 +65,7 @@ const MyModel = () => (
 
             </Field>
           </div>
-          <div>
-            <label>Toppings</label>
-            <Field name="toppings" component="select" multiple>
-              { mselection.map(x=>(
-                <option value={x.value}>{x.label}</option>
 
-              ))}
-            </Field>
-          </div>
           <div>
             <label>Checkbox Selection</label>
             <div>
@@ -90,7 +76,7 @@ const MyModel = () => (
                     component="input"
                     type="checkbox"
                     value={x}
-                  />{x}
+                  />{'  '} {x}
                 </label>
               ))}
             </div>
@@ -104,7 +90,7 @@ const MyModel = () => (
                   component="input"
                   type="radio"
                   value={x}
-                />{x}
+                />{'  '} {x}
               </label>
 
               ))}
