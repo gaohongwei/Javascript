@@ -1,30 +1,40 @@
-function isEmpty(o){
-  // not defined, or not assigned, or null
-  // use of them
-  return !!o
-  return o == null
-  return typeof o === 'undefined' || o === null
-}
+Basic
+  function isEmpty(o){
+    // not defined, or not assigned, or null
+    // use of them
+    return !!o
+    return o == null
+    return typeof o === 'undefined' || o === null
+  }
 
-function isObjectType(o){
-  // use of them
-  return typeof o === 'object'
-  return o instanceof Object
-}
+  function isObjectType(o){
+    // use of them
+    return typeof o === 'object'
+    return o instanceof Object
+  }
 
-function isRealObject(o){
-  // not from Date, String etc
-  return o.constructor === Object
-}
+  function isRealObject(o){
+    // not from Date, String etc
+    return o.constructor === Object
+  }
 
-function isRealArray(o){
-  return o.constructor === Array
-}
+  function isRealArray(o){
+    return o.constructor === Array
+  }
 
+Actual usgae:
+  function isObject(o){
+    return isObjectType(o) || isRealObject(o)
+  }
 
-function isObject(o){
-  return isObjectType(o) || isRealObject(o)
-}
+  function isObject(o){
+    return o && typeof o === 'object' && o.constructor === Object
+  }
+
+  function isArray(o){
+    return o && typeof o === 'object' && o.constructor === Array
+  }
+
 // ES5 actually has a method for this (ie9+)
 Array.isArray(o);
 
