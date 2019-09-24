@@ -1,17 +1,3 @@
-Null & undefined
-Most times you don't need to check explicitly for null and undefined 
-since they're both falsy values. 
-However to do it below functions does the trick.
-// Returns if a value is null
-function isNull (value) {
-return value === null;
-}
-
-// Returns if a value is undefined
-function isUndefined (value) {
-return typeof value === 'undefined';
-}
-
 // Returns if a value is an object
 function isObject (value) {
 return value && typeof value === 'object' && value.constructor === Object;
