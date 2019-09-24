@@ -1,12 +1,5 @@
 https://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript
 
-
-如何戒酒
-
-
-
-
-
 Assumption:
   All variables has been declared/defined
   So can compare variable with value
