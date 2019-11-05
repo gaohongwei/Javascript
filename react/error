@@ -1,3 +1,6 @@
+#####   Uncaught TypeError: x.map is not a function  #####   
+  x is not an array
+
 #####   Uncaught ReferenceError: props is not defined  #####   
 Use this.props
 
