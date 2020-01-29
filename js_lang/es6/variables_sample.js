@@ -1,5 +1,15 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+Read nested data
+  const nested_data = {
+    name: 'my name',
+    data: {
+      list: ['aa', 'bb'],
+      loading: true
+    }
+  }
 
+  const { name, data: { list } } = nested_data
+  
 Merge multiple object
 // es5
   var obj1 = { a: 1, b: 2 }
