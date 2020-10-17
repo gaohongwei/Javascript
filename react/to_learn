@@ -1,7 +1,0 @@
-Some features
-  ref, use when you have to
-  
-  useEffect, similar to didMount,
-    useEffect(() => {
-      props.fetchUser(cookies.my_sunpower_access_token);
-    }, []);  

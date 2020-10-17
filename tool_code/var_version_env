@@ -1,4 +1,9 @@
+import React from 'react'
+
+React.version
+process.env.NODE_ENV
 
 <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
 const dwolla = window.dwolla;
 const $=window.$; //jQuery
+

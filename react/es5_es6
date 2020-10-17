@@ -1,14 +1,30 @@
+##### Babel #####
+Babel is a JavaScript compiler
+Write next generation JavaScript,
+(a) => {a}    (function(a){a;});
+(a) => (a)    (function(a){ return a;});
+
+let a=0;  var a=0;
+
+
+##### jsx #####
+JSX is a preprocessor step that
+adds XML syntax to JavaScript.
+You can definitely use React without JSX but JSX makes React a lot more elegant.
+Just like XML, JSX tags have a tag name, attributes, and children.
+
+
 i.  require vs import
    // ES5
 var React = require('react');
- 
+
 // ES6
 import React from 'react';
 ii. export vs exports
 
    // ES5
 module.exports = Component;
- 
+
 // ES6
 export default Component;
 iii.    component and function
@@ -18,7 +34,7 @@ var MyComponent = React.createClass({
         return <h3>Hello Edureka!</h3>;
     }
 });
- 
+
 // ES6
 class MyComponent extends React.Component {
     render() {
@@ -34,7 +50,7 @@ var App = React.createClass({
         return <h3>Hello, {this.props.name}!</h3>;
     }
 });
- 
+
 // ES6
 class App extends React.Component {
     render() {
@@ -51,7 +67,7 @@ var App = React.createClass({
         return <h3>Hello, {this.state.name}!</h3>;
     }
 });
- 
+
 // ES6
 class App extends React.Component {
     constructor() {
