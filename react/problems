@@ -1,3 +1,6 @@
+- UI not refreshed after code change
+  - rm .git/index.lock
+
 - Errors
 #####   Uncaught TypeError: x.map is not a function  #####
   x is not an array
